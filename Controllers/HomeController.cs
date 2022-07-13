@@ -43,6 +43,11 @@ public class HomeController : Controller
             ViewBag.AgregarJugador = IdEquipo; 
             return View("AgregarJugador");
         }
+    IActionResult AgregarEquipo(int IdEquipo)
+        {
+            ViewBag.AgregarEquipo = IdEquipo; 
+            return View("AgregarEquipo");
+        }
     [HttpPost]IActionResult GuardarJugador(int IdJugador, int IdEquipo, string nombre, DateTime fechaNacimiento, string foto, string equipoActual)
     {
         Jugador jugador = new Jugador(IdJugador, IdEquipo, nombre, fechaNacimiento, foto, equipoActual);

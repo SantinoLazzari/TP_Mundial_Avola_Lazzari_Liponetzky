@@ -15,6 +15,13 @@ public class BD {
             db.Execute(sql, new { pNombre = jug.Nombre, pIdEquipo = jug.IdEquipo, pFechaNacimiento = jug.FechaNacimiento, pFoto=jug.Foto, pEquipoActual=jug.EquipoActual });
             }
         }
+        public static void AgregarEquipo(Equipo equi)
+        {
+            string sql = "INSERT INTO Equipos VALUES (@pIdEquipo, @pNombre,@pEscudo,@pCamiseta,@pContinente, @pCopasGanadas)";
+            using(SqlConnection db = new SqlConnection(_connectionString)){
+            db.Execute(sql, new { pNombre = equi.Nombre, pIdEquipo = equi.IdEquipo, pEscudo = equi.Escudo, pCamiseta = equi.Camiseta, pContinente = equi.Continente, pCopasGanadas = equi.CopasGanadas});
+            }
+        }
         public static void EliminarJugador(int idJugador){
         string sql = "DELETE FROM Jugador WHERE IdJugador = @pIdJugador";
         using(SqlConnection db = new SqlConnection(_connectionString)){

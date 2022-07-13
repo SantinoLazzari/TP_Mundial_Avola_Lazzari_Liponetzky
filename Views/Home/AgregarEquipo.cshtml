@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Agregar equipo";
+}
+<form method="post" action='@Url.Action("IdEquipo")'>
+    <div class="form-group">
+              <label for="exampleFormControlInput1">Nombre</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre del equipo">
+            </div>
+             <div class="form-group">
+              <label for="exampleFormControlSelect1">Escudo</label>
+              <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Escudo del equipo">
+            </div>
+             <div class="form-group">
+              <label for="exampleFormControlSelect1">Camiseta</label>
+              <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Camiseta del equipo">
+            </div>
+            <!--FALTA ESCUDO Y CAMISETA -->
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Continente</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Continente del equipo">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Copas ganadas</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Copas ganadas del equipo">
+            </div>
+           <button onclick="alert('Equipo agregado')">Agregar equipo</button>
+  @ViewBag.AgregarEquipo
+  </form>
