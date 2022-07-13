@@ -21,17 +21,21 @@ public class BD {
             db.Execute(sql, new { pIdJugador = idJugador });
         }
         }
-        public static void VerInfoEquipo(int idEquipo){
+        public static Equipo VerInfoEquipo(int idEquipo){
+        Equipo equipo;
         string sql = "SELECT * FROM Equipo WHERE idEquipo = @pIdEquipo";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new { pIdEquipo = idEquipo });
+            equipo= db.QueryFirstOrDefault<Equipo>(sql, new { pIdEquipo = idEquipo });
         }
+        return equipo;
         }
-        public static void VerInfoJugador(int idJugador){
+        public static Jugador VerInfoJugador(int idJugador){
+        Jugador jugador;
         string sql = "SELECT * FROM Jugador WHERE idJugador = @pidJugador";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new { pidJugador = idJugador });
+           jugador=db.QueryFirstOrDefault<Jugador>(sql, new { pidJugador = idJugador });
         }
+        return jugador;
         }
         public static List<Equipo> ListarEquipos(){
         List<Equipo> lista = new List<Equipo>();
