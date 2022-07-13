@@ -10,7 +10,7 @@ public class BD {
 
         public static void AgregarJugador(Jugador jug)
         {
-            string sql = "INSERT INTO Peliculas VALUES (@pIdJugador, @pIdEquipo, @pNombre,@pFechaNacimiento,@pFoto,@pEquipoActual )";
+            string sql = "INSERT INTO Jugadores VALUES (@pIdJugador, @pIdEquipo, @pNombre,@pFechaNacimiento,@pFoto,@pEquipoActual )";
             using(SqlConnection db = new SqlConnection(_connectionString)){
             db.Execute(sql, new { pNombre = jug.Nombre, pIdEquipo = jug.IdEquipo, pFechaNacimiento = jug.FechaNacimiento, pFoto=jug.Foto, pEquipoActual=jug.EquipoActual });
             }

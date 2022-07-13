@@ -28,4 +28,25 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+    public IActionResult VerDetalleEquipo(int IdEquipo)
+        {
+            ViewBag.VerInfoEquipo = BD.VerInfoEquipo(IdEquipo); 
+            return View("VerInfoEquipo");
+        }
+    public IActionResult VerDetalleJugador(int IdJugador)
+        {
+            ViewBag.VerInfoJugador = BD.VerInfoJugador(IdJugador); 
+            return View("VerInfoJugador");
+        }
+    public IActionResult AgregarJugador(int IdEquipo)
+        {
+            ViewBag.AgregarJugador = IdEquipo; 
+            return View("AgregarJugador");
+        }
+    [HttpPost] IActionResult GuardarJugador()
+    {
+        ViewBag.VerInfoEquipo = BD.VerInfoEquipo(IdEquipo); 
+    }
+
+   
 }
