@@ -1,23 +1,19 @@
 @{
     ViewData["Title"] = "DETALLE DEL EQUIPO";
-}
-<form method="post" action='@Url.Action("IdEquipo")'>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Nombre</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre y Apellido del jugador">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Fecha de nacimiento</label>
-              <input type="Date" class="form-control" id="exampleFormControlInput1" placeholder="Fecha de nacimiento del jugador">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Foto</label>
-              <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Foto del jugador">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Equipo Actual</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Equipo Actual del jugador">
-            </div>
-           <button onclick="alert('Jugador agregado')">Agregar jugador</button>
-            @ViewBag.AgregarJugador
-  </form>
+} 
+<div>
+  <center><h2>@ViewBag.Equipo.Nombre</h2></center>
+  <img src="@ViewBag-Equipo.Escudo">
+  <img src="@ViewBag-Equipo.Camiseta">
+  <h2>Copas Ganadas: @ViewBag.Equipo.CopasGanadas</h2>
+  <h2>Continente: @ViewBag.Equipo.Continente</h2>
+  <h2>Jugadores</h2>
+  @foreach (Jugador jg in @ViewBag.VerDetalleJugador)
+  {
+    <tr>
+      <td class="pelos">@jg.Nombre</td>
+      <td class="pelos"><a href='@Url.Action("VerDetalleJugador", "Home", new{IdJugador = jg.IdJugador})' class="btn btn-primary"> Detalles del Jugador</a></td>
+      <td class="pelos"><a href='@Url.Action("EliminarJugador", "Home", new{IdJugador = jg.IdJugador})' class="btn btn-danger"> Eliminar Jugador</a></td>
+      <td class="pelos"><a href='@Url.Action("AgregarJugador", "Home", new{IdEquipo = jg.IdEquipo})' class="btn btn-danger"> Crear Jugador </a></td>
+    </tr>
+  }

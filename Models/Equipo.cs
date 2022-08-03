@@ -1,5 +1,5 @@
 using System;
-namespace TP_Mundial_Avola_Lazzari_Liponetzky;
+namespace TP_Mundial_Avola_Lazzari_Liponetzky.Models;
 public class Equipo
 {
     private  int _IdEquipo;
@@ -17,6 +17,18 @@ public class Equipo
         _Camiseta=camiseta;
         _Continente=continente;
         _CopasGanadas=copasGanadas;
+    }
+
+    public Equipo(){
+       
+        _IdEquipo=0;
+        _Nombre="";
+        _Escudo="";
+        _Camiseta="";
+        _Continente="";
+        _CopasGanadas=0;
+
+
     }
 
     public int IdEquipo 

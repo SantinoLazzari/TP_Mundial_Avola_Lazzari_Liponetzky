@@ -1,54 +1,20 @@
-﻿<!doctype html>
-<html lang="es">
+﻿   @{
+      ViewData["Title"]="Home Page";
+    }
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <div class="text-center">
+      <h1 class="display-4">Selecciones</h1>
+    </div>
 
-    <h1 class = "titulo"><center>SELECCIONES</center></h1>
-
-    <!-- Bootstrap CSS -->
-      <center>
-      <div class="container">
-          <div class="row">
-          <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                  <img src="Escudo-Arg.png" class="card-img-top" alt="...">
-                  <div class="card-body">
-                  <p class="card-title">Argentina</p> 
-                  <a href='@Url.Action("VerDetalleEquipo", "Home")' class="btn btn-primary">Información de la selección</a>
-                </div>
-                </div>
-          </div>
-          <div class="col-sm">							
-                <div class="card" style="width: 18rem;">
-                  <img src="Escudo-Fra.png" class="card-img-top" alt="...">
-                  <div class="card-body">
-                      <p class="card-title">Francia</p> 
-                      <a href="delivery.html" class="btn btn-primary">Información de la selección</a>
-                  </div>								
-                </div>						
-          </div>
-          <div class="col-sm"><div class="card" style="width: 18rem;">							
-                <img src="Escudo-Sen.png" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-title">Senegal</p>
-                  <a href="delivery.html" class="btn btn-primary">Información de la selección</a>
-                  </div>															
-              </div>
-          </div>
-          </div>
+     @foreach (Equipo item  in @ViewBag.Lista)
+     {
+      <div class="card" style="width: 18rem;">
+        <a href='@Url.Action("VerDetalleEquipo", "Home",new{idEquipo=item.IdEquipo})' img class="card-img-top" src="/Imagenes/Escudos/@item.Escudo"></a>
+        <div class="card-body">
+          <h5 class="card-title">@item.Nombre</h5>
+          <a href='Url.Action("VerDetalleEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-primary"> Información de los equipos</a>
         </div>
-      </center>
-            </div>	
-          </div>
-        </div>
-      </center>
-      <center>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</html>
+      </div>
+     }
+
+      

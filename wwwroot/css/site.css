@@ -20,16 +20,22 @@ body {
 .background{
   background-color: #950d33;
 }
- 
+.card{
+  background-color: #950d33;
+  border-width: 0;
+}
+.card-title{
+  color: white;
+  font-size: 30px;
+}
 .navcolor
 {
   background-color: white;
- 
 }
 
 .titulo
 {
-  font-size:37px;
+  font-size:50px;
   color: white;
   font-family: monospace;
 }

@@ -15,7 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.Lista=BD.ListarEquipos();
         return View();
+
     }
 
     public IActionResult Privacy()
@@ -31,13 +33,15 @@ public class HomeController : Controller
     IActionResult VerDetalleEquipo(int IdEquipo)
         {
             ViewBag.VerInfoEquipo = BD.VerInfoEquipo(IdEquipo); 
-            return View("VerInfoEquipo");
+            return View("Home/VerDetalleEquipo.cshtml");
         }
     IActionResult VerDetalleJugador(int IdJugador)
         {
             ViewBag.VerInfoJugador = BD.VerInfoJugador(IdJugador); 
-            return View("VerInfoJugador");
+            return View("Home/VerDetalleJugador.cshtml");
         }
+
+
     IActionResult AgregarJugador(int IdEquipo)
         {
             ViewBag.AgregarJugador = IdEquipo; 
@@ -46,7 +50,7 @@ public class HomeController : Controller
     IActionResult AgregarEquipo(int IdEquipo)
         {
             ViewBag.AgregarEquipo = IdEquipo; 
-            return View("AgregarEquipo");
+            return View("Home/AgregarEquipo.cshtml");
         }
     [HttpPost]IActionResult GuardarJugador(int IdJugador, int IdEquipo, string nombre, DateTime fechaNacimiento, string foto, string equipoActual)
     {

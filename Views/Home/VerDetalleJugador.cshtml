@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "VER JUGADOR  ";
+} 
+<center> <img src="@ViewBag-Jugador.Foto"></center>
+  <h2>Nombre: @ViewBag.Jugador.Nombre</h2>
+  <h2>Equipo actual: @ViewBag.Jugador.EquipoActual</h2>
+  <h2>Fecha de nacimiento: @ViewBag.Jugador.FechaNacimiento</h2>
+  <center><a href='Url.Action("VerDetalleEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-primary">Volver</a></center>

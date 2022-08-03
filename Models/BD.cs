@@ -1,11 +1,11 @@
-namespace TP_Mundial_Avola_Lazzari_Liponetzky;
+namespace TP_Mundial_Avola_Lazzari_Liponetzky.Models;
 using System.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
 public class BD {
 
     private static string _connectionString = 
-        @"Server=A-AMI-201;DataBase=TP06-Avola,Lazzari,Liponetzky;Trusted_Connection=True";
+        @"Server=A-PHZ2-CIDI-032\;DataBase=TP06-Avola,Lazzari,Liponetzky;Trusted_Connection=True";
         // preguntar a pascuí o a juli o a sulivan/niño
 
         public static void AgregarJugador(Jugador jug)
@@ -45,12 +45,12 @@ public class BD {
         return jugador;
         }
         public static List<Equipo> ListarEquipos(){
-        List<Equipo> lista = new List<Equipo>();
+        List<Equipo> Lista = new List<Equipo>();
         string sql = "SELECT * FROM Equipo";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            lista = db.Query<Equipo>(sql).ToList();
+        Lista = db.Query<Equipo>(sql).ToList();
         }
-        return lista;
+        return Lista;
     }
         public static List<Jugador> ListarJugador(int idEquipo){
         List<Jugador> lista = new List<Jugador>();
