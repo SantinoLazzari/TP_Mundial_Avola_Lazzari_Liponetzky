@@ -9,9 +9,8 @@ public class Jugador
     private  string _Foto;
     private  string _EquipoActual;
 
-    public Jugador ( int idJugador, int idEquipo, string nombre, DateTime fechaNacimiento, string foto, string equipoActual)
+    public Jugador (int idEquipo, string nombre, DateTime fechaNacimiento, string foto, string equipoActual)
     {
-        _IdJugador=idJugador;
         _IdEquipo=idEquipo;
         _Nombre=nombre;
         _FechaNacimiento=fechaNacimiento;

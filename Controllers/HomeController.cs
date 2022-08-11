@@ -25,40 +25,42 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult VerDetalleEquipo(int IdEquipo)
+        {
+            ViewBag.VerInfoEquipo = BD.VerInfoEquipo(IdEquipo); 
+            ViewBag.VerInfoJugador = BD.ListarJugador(IdEquipo);
+            return View("VerDetalleEquipo");
+        }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    IActionResult VerDetalleEquipo(int IdEquipo)
-        {
-            ViewBag.VerInfoEquipo = BD.VerInfoEquipo(IdEquipo); 
-            return View("Home/VerDetalleEquipo.cshtml");
-        }
-    IActionResult VerDetalleJugador(int IdJugador)
+
+    public IActionResult VerDetalleJugador(int IdJugador)
         {
             ViewBag.VerInfoJugador = BD.VerInfoJugador(IdJugador); 
-            return View("Home/VerDetalleJugador.cshtml");
+            return View("VerDetalleJugador");
         }
 
-
-    IActionResult AgregarJugador(int IdEquipo)
+    public IActionResult AgregarJugador(int IdEquipo)
         {
             ViewBag.AgregarJugador = IdEquipo; 
             return View("AgregarJugador");
         }
-    IActionResult AgregarEquipo(int IdEquipo)
+    public IActionResult AgregarEquipo(int IdEquipo)
         {
             ViewBag.AgregarEquipo = IdEquipo; 
-            return View("Home/AgregarEquipo.cshtml");
+            return View("AgregarEquipo");
         }
-    [HttpPost]IActionResult GuardarJugador(int IdJugador, int IdEquipo, string nombre, DateTime fechaNacimiento, string foto, string equipoActual)
+    [HttpPost]IActionResult GuardarJugador(int IdEquipo, string nombre, DateTime fechaNacimiento, string foto, string equipoActual)
     {
-        Jugador jugador = new Jugador(IdJugador, IdEquipo, nombre, fechaNacimiento, foto, equipoActual);
+        Jugador jugador = new Jugador(IdEquipo, nombre, fechaNacimiento, foto, equipoActual);
         BD.AgregarJugador(jugador);
-        return RedirectToAction("VerDetalleEquipo");
+        return RedirectToAction("VerDetalleEquipo","Home",new{IdEquipo=IdEquipo});
     }
-    IActionResult EliminarJugador(int IdJugador)
+    public IActionResult EliminarJugador(int IdJugador)
     {
         BD.EliminarJugador(IdJugador);
         return RedirectToAction("VerDetalleEquipo");

@@ -1,19 +1,49 @@
 @{
-    ViewData["Title"] = "DETALLE DEL EQUIPO";
+    ViewData["Title"] = "DETALLE DEL PAIS";
 } 
 <div>
-  <center><h2>@ViewBag.Equipo.Nombre</h2></center>
-  <img src="@ViewBag-Equipo.Escudo">
-  <img src="@ViewBag-Equipo.Camiseta">
-  <h2>Copas Ganadas: @ViewBag.Equipo.CopasGanadas</h2>
-  <h2>Continente: @ViewBag.Equipo.Continente</h2>
-  <h2>Jugadores</h2>
-  @foreach (Jugador jg in @ViewBag.VerDetalleJugador)
-  {
-    <tr>
-      <td class="pelos">@jg.Nombre</td>
-      <td class="pelos"><a href='@Url.Action("VerDetalleJugador", "Home", new{IdJugador = jg.IdJugador})' class="btn btn-primary"> Detalles del Jugador</a></td>
-      <td class="pelos"><a href='@Url.Action("EliminarJugador", "Home", new{IdJugador = jg.IdJugador})' class="btn btn-danger"> Eliminar Jugador</a></td>
-      <td class="pelos"><a href='@Url.Action("AgregarJugador", "Home", new{IdEquipo = jg.IdEquipo})' class="btn btn-danger"> Crear Jugador </a></td>
-    </tr>
-  }
+  <h1 class="display-4 mb-5">Detalles de @ViewBag.VerInfoEquipo.Nombre</h1>
+  <div class="row mx-5">
+    <div class="cok-6">
+        <tbody>
+          <tr>
+            <th class="textos">Escudo</th>
+            <img src="/Imagenes/Escudos/@ViewBag.VerInfoEquipo.Escudo">
+          </tr>
+          <tr>
+            <th class="textos">Camiseta</th>
+            <img src="/Imagenes/Camisetas/@ViewBag.VerInfoEquipo.Camiseta">
+          </tr>
+          <table class="table"></table>
+          <tr>
+            <th class="textos">Continente</th>
+            <th>@ViewBag.VerInfoEquipo.Continente</th>
+          </tr>
+          <tr>
+            <th class="textos">Copas Ganadas</th>
+            <th>@ViewBag.VerInfoEquipo.CopasGanadas</th>
+          </tr>
+        </tbody>
+      </table>
+      <br></br>
+      <a href='@Url.Action("AgregarJugador","Home", new{IdEquipo=@ViewBag.VerInfoEquipo.IdEquipo})' class= "btn btn-primary"> Agregar jugador </a>
+      <div class="col-6 mb-5">
+        <center><h2>Jugadores:</h2></center>
+        <table class="table table-striped Size">
+        <thead>
+        <td> Nombre</td>
+        <div>
+          @foreach(Jugador item in @ViewBag.VerInfoJugador){
+            @if (item.IdEquipo ==  @ViewBag.VerInfoEquipo.IdEquipo)
+            {
+            <tr>
+              <td> @item.Nombre</td>
+              <td> <a href='@Url.Action("VerDetalleJugador","Home", new{IdJugador=item.IdJugador})'class= "btn btn-primary">Detalles</td>
+              <td> <a href='@Url.Action("EliminarJugador","Home", new{IdJugador=item.IdJugador, IdEquipo=item.IdEquipo})'class= "btn btn-danger">Eliminar</td>
+            </tr>
+            }
+
+          }
+        </div>
+      </div>
+      </table>

@@ -3,16 +3,17 @@
     }
 
     <div class="text-center">
-      <h1 class="display-4">Selecciones</h1>
+      <h1 class="Titulo">Selecciones</h1>
     </div>
 
      @foreach (Equipo item  in @ViewBag.Lista)
      {
       <div class="card" style="width: 18rem;">
-        <a href='@Url.Action("VerDetalleEquipo", "Home",new{idEquipo=item.IdEquipo})' img class="card-img-top" src="/Imagenes/Escudos/@item.Escudo"></a>
+        
+        <a href='@Url.Action("VerDetalleEquipo", "Home",new{idEquipo=item.IdEquipo})' ><img class="card-img-top" src="/Imagenes/Escudos/@item.Escudo" ></a>
         <div class="card-body">
           <h5 class="card-title">@item.Nombre</h5>
-          <a href='Url.Action("VerDetalleEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-primary"> Información de los equipos</a>
+          <a href='@Url.Action("VerDetalleEquipo","Home", new{IdEquipo=item.IdEquipo})' class="btn btn-primary"> Información de los equipos</a>
         </div>
       </div>
      }
